@@ -1,0 +1,114 @@
+22.03
+24.03
+-----------
+Notes:
+run vs as admin 
+on icon vs in start went to compatibitlaty and made run vs as admin , so everytime when we run 
+Powershell we run as admin, cuz in k8s we must use Powershell as admin :
+very important:
+STOPPING OR DELETING HYPERV CUZ  DOCKERDESKTOP AND UBUNTU WSL ISSUE :
+if you install on virtual box and you use ubuntu and docker laptop , your Hyper-v must be active 
+otherwise you get error , if you use virtualbox driver you can not start host and work in k8s ,it fails :
+StartHost failed, but will try again: creating host: create: precreate: This computer is running Hyper-V. VirtualBox won't boot a 64bits VM when Hyper-V is activated. Either use Hyper-V as a driver, or disable the Hyper-V hypervisor. (To skip this check, use --virtualbox-no-vtx-check)
+
+----------------------------------------------------------------------------------------------------------------------
+SUMMARY OF INSTALLATION:
+on your home directory : cd ~
+minikube installation 
+kubectl installation 
+virtualization on your machine  during start Minikube( Hyper-v, Vbox,...)
+
+for all environmet is these following command the same --------------------
+choco install kubernetes-cli
+kubectl version --client
+----------------------------------------------------------------------------------------------
+Detail:
+Installation and create   Kubectl:
+1.for windows:
+Install kubectl
+we want  to  create  a  local  cluster :
+https://kubernetes.io/docs/setup/
+find : what next , donload and install tools including kubectl 
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+find :install kubectl,   kubectl on windows  :
+click :Install on Windows using Chocolatey, Scoop
+ $ choco install kubernetes-cli
+ mmb20> kubectl version  --client
+ Kustomize Version: v5.4.2
+
+
+2. Install minikube and environment:
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+to have a  cluster we must choose one the environemts: hyper-v, virtualbox etc 
+on windiws: choco install minikube 
+minikube version
+minikube version: v1.35.0
+minikube run
+*** ATTENTION: do not do it  !!!!if you were porposed to run a clushter , run :"minikube start"
+minikube status
+🤷  Profile "minikube" not found. Run "minikube profile list" to view all profiles.
+👉  To start a cluster, run: "minikube start"
+
+3.----------------------selecting Environment to start----------------------------------------------------
+Select a  virtual machine manageer
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+windows version:
+Enabling Hyper-V
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+to check hyperv enabled and working:
+Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
+
+To disable  hyperv  if youre using on windows on Powrshell in home directory :cd ~
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+
+Reboot to active Hyper-v
+
+minikube start --driver=hyperv 
+minikube config set driver hyperv
+
+minikube status
+minikube run
+DONE succeccfully ++++22.03
+-------------------------------------------------------------------------------------------------------------------------------
+Docker version:
+create a cluster(Hypervier comes here)
+$minikube start --driver docker
+minikube start --driver=docker --static-ip=192.168.2.45 
+minikube start , status 
+
+--------------------------------------------------------------------------------------------------------------------------------
+VirtualBOX:
+ minikube start --driver=virtualbox
+😄  minikube v1.35.0 on Microsoft Windows 10 Home 10.0.19045.5608 Build 19045.5608
+E0321 10:33:12.432603   11656 start.go:812] api.Load failed for minikube: filestore "minikube": Docker machine "minikube" does not exist. Use "docker-machine ls" to list machines. Use "docker-machine create" to add a new one.
+E0321 10:33:12.433634   11656 start.go:812] api.Load failed for minikube: filestore "minikube": Docker machine "minikube" does not exist. Use "docker-machine ls" to list machines. Use "docker-machine create" to add a new one.
+✨  Using the virtualbox driver based on existing profile
+👍  Starting "minikube" primary control-plane node in "minikube" cluster
+🔥  Creating virtualbox VM (CPUs=2, Memory=4000MB, Disk=20000MB) ...
+❗  Failing to connect to https://registry.k8s.io/ from inside the minikube VM
+💡  To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+🐳  Preparing Kubernetes v1.32.0 on Docker 27.4.0 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+E0321 10:36:02.659330   11656 start.go:160] Unable to scale down deployment "coredns" in namespace "kube-system" to 1 replica: non-retryable failure while rescaling coredns deployment: Operation cannot be fulfilled on deployments.apps "coredns": the object has been modified; please apply your changes to the latest version and try again
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+
+
+
+
+
+
+
+
+
+
+
+
+
