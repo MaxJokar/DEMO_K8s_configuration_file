@@ -53,24 +53,8 @@ minikube ip
 
 Browser: minikubeip:172.26.237.16:30100
 http://172.26.235.187:30100/
-DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 24.03.
+# DONEEEE 24.03.
 we do not need to run anything, minikube is running 
 ---------------------------------------------------------------------------------------------------------------
-ADDITIONAL INFO:
-$kubectl get node/service -o wide
-NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME
-minikube Ready control-plane 29m v1.32.0 192.168.49.2 <none> Ubuntu 22.04.5 LTS 5.15.167.4-microsoft-standard-WSL2 docker://27.4.1
-    kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2d
-in browser: http://192.168.49.2:30100/
-
-$ kubectl describe service/pod  webapp-service
-
-minikube status , ip (192.168.49.2)
-FROM HERE WE GO INSIDE THE MINIKUBE ⇒ KUBECTL !!!
-$kubectl get node
-dockerhub find mongo version 5 for deploment to create mongo 
-in mongo.yml also mentione the versin of mongo we want 
-we configure our 4 scripts , mongo-secret, config , webapp etc . 
-for external access , we add , nodePort 30000-32767:
 
 
