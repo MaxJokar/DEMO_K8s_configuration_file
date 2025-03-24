@@ -8,8 +8,11 @@
 -------------------------------------------------------------------------------------
 we now create one by one each component in K8s:
 $kubectl get pod
-No resources found in default namespace.
-to crate pods:
+
+
+
+#to crate pods:
+-----------------
 kubectl apply -f mongo-config.yml
 kubectl apply -f mongo-secret.yml
 kubectl apply -f mongo.yml 
@@ -49,10 +52,10 @@ webapp-service NodePort 10.105.190.6 <none> 8080:30100/TCP 16m
 
 
 minikube ip
-172.26.235.187
+1*2.26.2*5.1*7
 
-Browser: minikubeip:172.26.237.16:30100
-http://172.26.235.187:30100/
+Browser: minikubeip:1*2.26.2*5.1*7.16:30100
+http://1*2.26.2*5.1*7:30100/
 # DONEEEE 24.03.
 we do not need to run anything, minikube is running 
 ---------------------------------------------------------------------------------------------------------------
